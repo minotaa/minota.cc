@@ -1,4 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700;1,800&display=swap');
+@font-face {
+  font-family: 'Departure Mono';
+  src: url('/DepartureMono-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 @tailwind base;
 @tailwind components;
@@ -6,6 +11,6 @@
 
 @layer base {
   html {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Departure Mono', monospace;
   }
 }

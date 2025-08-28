@@ -1,5 +1,6 @@
 <script lang="ts">
-  //let info = infoDump[Math.floor((Math.random()*infoDump.length))]
+  import { onMount } from "svelte";
+  import { page } from '$app/stores';
 
   function copyToClipboard(e: Event) {
     e.preventDefault()
@@ -8,87 +9,170 @@
         console.error(err)
       })
   }
+
+  const konamiCode = [
+    "ArrowUp", "ArrowUp",
+    "ArrowDown", "ArrowDown",
+    "ArrowLeft", "ArrowRight",
+    "ArrowLeft", "ArrowRight",
+    "b", "a"
+  ];
+  let konamiIndex = 0;
+
+
+  onMount(() => {
+    window.addEventListener("keydown", (e) => {
+      if (e.key === konamiCode[konamiIndex]) {
+        konamiIndex++;
+        if (konamiIndex === konamiCode.length) {
+          const img = document.querySelector('img[alt="minota\'s face"]');
+          if (img) img.src = "/mino toss.gif";
+          konamiIndex = 0;
+        }
+      } else {
+        konamiIndex = 0;
+      }
+    });
+  });
+
+  const postFiles = import.meta.glob('../posts/*.md');
+  let posts: { title: string, date: string, slug: string }[] = [];
+
+  onMount(async () => {
+    const loadedPosts = await Promise.all(
+      Object.entries(postFiles).map(async ([path, resolver]) => {
+        const post = await resolver();
+        return {
+          title: post.metadata.title,
+          date: post.metadata.date,
+          slug: path.split('/').pop()?.replace('.md', '') ?? ''
+        };
+      })
+    );
+
+    posts = loadedPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    console.log(posts)
+  });
 </script>
 
 <div class="md:container md:mx-auto flex mx-auto flex-col pl-4 pt-8 gap-4 mb-4">
-  <div class="flex md:flex-row flex-col">
-    <h1 class="text-2xl text-slate-200 font-bold text-center md:text-left"><strong class="text-sky-300">minota</strong></h1>
-    <h2 class="text-lg text-slate-500 md:ml-3 mt-1 text-center md:text-left">he/him</h2>
+  <div class="flex flex-row items-center gap-6 mb-2">
+    <img alt="minota's face" title="Quite classy looking." class="rounded h-32 w-32 md:h-40 md:w-40 object-cover" src="/me.jpg" />
+    <div class="flex flex-col justify-center">
+      <h1 class="text-2xl md:text-3xl text-slate-200 font-bold"><strong class="text-sky-300">minota</strong></h1>
+      <h2 class="text-lg text-slate-500">he/him</h2>
+        <div class="flex flex-wrap gap-2 mt-3 mb-2 text-center md:text-left">
+          {#each [
+              { text: "Discord", href: "https://discord.gg/8WAPWCFu8m" },
+              { text: "GitHub", href: "https://github.com/minotaa" },
+              { text: "Bluesky", href: "https://bsky.app/profile/minota.cc" },
+              { text: "Ko-fi", href: "https://ko-fi.com/minota" },
+              { text: "Email", href: "mailto:me@minota.cc" }
+            ] as link, i}
+            <span class="inline-block align-middle mx-1 -ml-1">
+              {#if i > 0}
+                <span class="text-slate-600 select-none font-bold text-lg align-middle">•</span>
+              {/if}
+              <a
+                class="text-slate-200 font-bold px-1 rounded-none transition-colors duration-150 hover:bg-sky-400 hover:text-zinc-900"
+                target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+                href={link.href}
+                style="border-radius: 0;"
+              >{link.text}</a>
+            </span>
+          {/each}
+        </div>
+          </div>
   </div>
-  <h2 class="text-lg text-slate-300 -mt-2 mb-2 text-center md:text-left">
-    <a class="transition-colors hover:text-sky-400" target="_blank" href="https://discord.gg/8WAPWCFu8m">Discord</a> /
-    <a class="transition-colors hover:text-sky-400" target="_blank" href="https://github.com/minotaa">GitHub</a> /
-    <a class="transition-colors hover:text-sky-400" target="_blank" href="https://bsky.app/profile/minota.cc">Bluesky</a> /
-    <a class="transition-colors hover:text-sky-400" target="_blank" href="https://ko-fi.com/minota">Ko-fi</a> /
-    <a class="transition-colors hover:text-sky-400" href="mailto:me@minota.cc">Email</a>
-  </h2>
-  <h1 class="text-xl text-slate-200 font-bold text-center md:text-left">projects</h1>
-  <div class="flex flex-col flex-wrap md:flex-row gap-2 md:place-self-start place-self-center">
-    <div class="shadow-lg rounded-lg p-4 w-80 pr-8 h-200 bg-zinc-900 border-2 border-zinc-700">
-      <h2 class="text-slate-300 text-lg font-bold">Xestra UHC; Notzo UHC; applejuice (2018 - 2024)</h2>
-      <h3 class="mt-2 text-zinc-400 text-md italic mb-4">
-        applejuice was an <a class="transition-colors text-sky-300 hover:text-sky-400" target="_blank" href="https://minecraft.fandom.com/wiki/Tutorials/Ultra_hardcore_survival">Ultra Hardcore</a> (or UHC) Minecraft server I made in 2022. 
-        It's notable for being the first UHC server I made in Kotlin. The source code for the plugin used can be found below.
-      </h3>
-      <a title="Open applejuice source code" href="https://github.com/applejuice-server/Kraftwerk" target="_blank" class="shadow-lg rounded-xl pt-2 pb-2 pl-4 pr-4 bg-sky-400 hover:bg-sky-500 transition-colors">Source Code</a>
-    </div>
-  
-    <div class="shadow-lg rounded-lg p-4 w-80 pr-8 h-200 bg-zinc-900 border-2 border-zinc-700">
-      <h2 class="text-slate-300 text-lg font-bold">piglin.club (2023)</h2>
-      <h3 class="mt-2 text-zinc-400 text-md italic mb-4">
-        piglin.club was the second server I made during 2022/2023. It's primarily a 1.20 Towny server that has elements of RPGs like skills, custom crafts, etc.
-        It largely was ended due to running into problems thinking of ways to make the game more creative.
-      </h3>
-      <a title="Open piglin.club source code" href="https://github.com/PiglinClub/Brimstone" target="_blank" class="shadow-lg rounded-xl pt-2 pb-2 pl-4 pr-4 bg-sky-400 hover:bg-sky-500 transition-colors">Source Code</a>
-    </div>
+  <h1 class="text-xl text-sky-300 font-bold text-left">Projects</h1>
+  <ul class="flex flex-col gap-0 md:gap-1 md:place-self-start place-self-center list-none p-0 m-0 w-full">
+    {#each [
+      {
+        title: "Myrkwood: Offshoot (2025)",
+        btns: [
+          { text: "itch.io", href: "https://minota.itch.io/myrkwood-offshoot" },
+          { text: "Steam", href: "https://store.steampowered.com/app/3951230/Myrkwood_Offshoot/" },
+          { text: "Source Code", href: "https://github.com/minotaa/coloma-co" }
+        ]
+      },
+      {
+        title: "Bulletlane (2025)",
+        btns: [
+          { text: "App Store", href: "https://apps.apple.com/us/app/bulletlane/id6743356289" },
+          { text: "Source Code", href: "https://github.com/minotaa/road-riot" }
+        ]
+      },
+      {
+        title: "Myrkwood (2024-2025)",
+        btns: [
+          { text: "App Store", href: "https://apps.apple.com/us/app/myrkwood/id6738539616" },
+          { text: "Source Code", href: "https://github.com/minotaa/myrkwood" }
+        ]
+      },
+      {
+        title: "Beachside Tactics (2024)",
+        btns: [
+          { text: "App Store", href: "https://apps.apple.com/us/app/beachside-tactics/id6596775495?itscg=30200&itsct=apps_box_badge&mttnsubad=6596775495" },
+          { text: "Source Code", href: "https://github.com/minotaa/rhode-island" }
+        ]
+      },
+      {
+        title: "ultrahardcore.org (2022-2024)",
+        btns: [
+          { text: "Source Code", href: "https://github.com/minotaa/ultrahardcore.org" }
+        ]
+      },
+      {
+        title: "piglin.club (2023)",
+        btns: [
+          { text: "Source Code", href: "https://github.com/PiglinClub/Brimstone" }
+        ]
+      },
+      {
+        title: "wushi (2019-2021)",
+        btns: [
+          { text: "Source Code", href: "https://github.com/wushi-bot/wushi" }
+        ]
+      },
+      {
+        title: "Xestra UHC, Notzo UHC, applejuice (2018-2024)",
+        btns: [
+          { text: "Source Code", href: "https://github.com/applejuice-server/Kraftwerk" }
+        ]
+      }
+    ] as project}
+      <li class="flex flex-col md:flex-row md:items-center mb-3 md:mb-1 w-full text-slate-300">
+        <span class="font-semibold">
+          {project.title}
+          <span class="hidden md:inline">..........</span>
+        </span>
+        <span class="flex flex-row gap-2 md:gap-4 md:mt-0 md:ml-2">
+          {#each project.btns as btn}
+            <a
+              title={btn.text}
+              href={btn.href}
+              target="_blank"
+              class="text-sky-400 font-bold px-1 rounded-none transition-colors duration-150 hover:bg-sky-500 hover:text-zinc-900"
+            >{btn.text}</a>
+          {/each}
+        </span>
+      </li>
+    {/each}
+  </ul>
 
-    <div class="shadow-lg rounded-lg p-4 pr-8 w-80 h-200 bg-zinc-900 border-2 border-zinc-700">
-      <h2 class="text-slate-300 text-lg font-bold">wushi (2019? - 2021)</h2>
-      <h3 class="mt-2 text-zinc-400 text-md italic mb-4">
-        wushi was a Discord bot made in Node.js and then later on made in TypeScript. There isn't really much to say about it! I thought it was cool!
-      </h3>
-      <a title="Open wushi bot source code" href="https://github.com/wushi-bot/wushi" target="_blank" class="shadow-lg rounded-xl mt-3 pt-2 pb-2 pl-4 pr-4 bg-sky-400 hover:bg-sky-500 transition-colors place-end">Source Code</a>
-    </div>
-
-    <div class="shadow-lg rounded-lg p-4 pr-8 w-80 h-200 bg-zinc-900 border-2 border-zinc-700">
-      <h2 class="text-slate-300 text-lg font-bold">Beachside Tactics (2024)</h2>
-      <h3 class="mt-2 text-zinc-400 text-md italic mb-4">
-        Internally known as Rhode Island. It is my first available Godot game. It's a small fishing game where you fish for fish to get more rods, baits, etc. It's still available on the App Store right now!
-      </h3>
-      <div class="flex flex-col w-fit place-end">
-        <a title="Get Beachside Tactics" href="https://apps.apple.com/us/app/beachside-tactics/id6596775495?itscg=30200&itsct=apps_box_badge&mttnsubad=6596775495" target="_blank" class="shadow-lg rounded-xl pt-2 pb-2 pl-4 pr-4 bg-sky-400 hover:bg-sky-500 transition-colors">App Store</a>
-      </div>
-    </div>
-
-    <div class="shadow-lg rounded-lg p-4 pr-8 w-80 h-200 bg-zinc-900 border-2 border-zinc-700">
-      <h2 class="text-slate-300 text-lg font-bold">Myrkwood (or Mirkwood) (2024-2025)</h2>
-      <h3 class="mt-2 text-zinc-400 text-md italic mb-4">
-        Murkwood? Myrkwood is a game inspired by an old Flash game, Three Goblets, in which you progress through the game by automatically fighting enemies and crafting items from its drops. Now on the App Store.
-      </h3>
-      <div class="flex flex-col w-fit place-end">
-        <a title="Get Myrkwood" href="https://apps.apple.com/us/app/myrkwood/id6738539616" target="_blank" class="shadow-lg rounded-xl pt-2 pb-2 pl-4 pr-4 bg-sky-400 hover:bg-sky-500 transition-colors">App Store</a>
-      </div>
-    </div>
-
-
-    <div class="shadow-lg rounded-lg p-4 pr-8 w-80 h-200 bg-zinc-900 border-2 border-zinc-700">
-      <h2 class="text-slate-300 text-lg font-bold">Bulletlane (2025)</h2>
-      <h3 class="mt-2 text-zinc-400 text-md italic mb-4">
-        Bulletlane is the third and newest game I made, it's a car based shoot 'em up in which you defeat enemies, get powerups, and upgrade your weapons, cars, and other stuff. It was inspired by an old game I played on the App Store, now I made a new version of it. Now on the App Store.
-      </h3>
-      <div class="flex flex-col w-fit place-end">
-        <a title="Get Bulletlane" href="https://apps.apple.com/us/app/bulletlane/id6743356289" target="_blank" class="shadow-lg rounded-xl pt-2 pb-2 pl-4 pr-4 bg-sky-400 hover:bg-sky-500 transition-colors">App Store</a>
-      </div>
-    </div>
-
-    <div class="shadow-lg rounded-lg p-4 pr-8 w-80 h-200 bg-zinc-900 border-2 border-zinc-700">
-      <h2 class="text-slate-300 text-lg font-bold">ultrahardcore.org (2022 - 2024)</h2>
-      <h3 class="mt-2 text-zinc-400 text-md italic mb-4">
-        My first Svelte project. It was intended to be a replacement website for <a class="transition-colors text-sky-300 hover:text-sky-400" target="_blank" href="https://uhc.gg">uhc.gg</a>, which is another calendar website for posting UHC matches.
-      </h3>
-      <div class="flex flex-col w-fit place-end">
-        <a title="Open ultrahardcore.org source code" href="https://github.com/minotaa/ultrahardcore.org" target="_blank" class="shadow-lg rounded-xl pt-2 pb-2 pl-4 pr-4 bg-sky-400 hover:bg-sky-500 transition-colors">Source Code</a>
-      </div>
-    </div>
-  </div>
+  <h1 class="text-xl text-sky-300 font-bold text-left mt-2">Posts</h1>
+  <ul class="flex flex-col gap-1 md:place-self-start place-self-center list-none p-0 m-0 w-full">
+    {#each posts as post}
+      <li class="flex items-center mb-1 w-full text-slate-300">
+        <span class="font-semibold whitespace-nowrap bg-sky-500 text-zinc-900 px-1">
+          {(() => {
+            const d = new Date(post.date);
+            const mm = String(d.getMonth() + 1).padStart(2, '0');
+            const dd = String(d.getDate() + 1).padStart(2, '0');
+            const yyyy = d.getFullYear();
+            return `${mm}-${dd}-${yyyy}`;
+          })()}</span><p>&nbsp;</p><a class="hover:text-zinc-900 px-1 hover:bg-sky-500" href={"/blog/" + encodeURIComponent(post.slug)}>{post.title}</a>
+      </li>
+    {/each}
+  </ul>
 </div>
