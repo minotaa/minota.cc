@@ -40,7 +40,7 @@
     return `${mm}-${dd}-${yyyy}`;
   })()}</h2>
 
-  <div class="blog-content prose font-[Departure Mono] mt-4 text-slate-300 space-y-4 mb-4">
+  <div class="md:container container blog-content prose font-[Departure Mono] mt-4 text-slate-300 space-y-4 mb-4">
     <svelte:component this={data.content} />
   </div>
 
