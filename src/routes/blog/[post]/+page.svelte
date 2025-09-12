@@ -29,9 +29,9 @@
 }
 </style>
 
-<div class="md:container md:mx-auto mx-auto pt-8 gap-4 mb-4">
+<div class="md:container md:mx-auto mx-auto pt-8 gap-4 mb-4 px-4">
   <h1 class="text-3xl mb-2 text-slate-200">{data.metadata.title}</h1>
-  <h2 class="font-semibold inline-block whitespace-nowrap bg-sky-500 text-zinc-900 text-2xl px-1">
+  <h2 class="font-semibold inline-block whitespace-nowrap bg-sky-500 text-slate-100 text-2xl px-1">
   {(() => {
     const d = new Date(data.metadata.date);
     const mm = String(d.getMonth() + 1).padStart(2, '0');
