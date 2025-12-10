@@ -1,6 +1,7 @@
 ---
 title: "Lack of Conviction"
 date: 2025-11-10
+hidden: true
 ---
 
 Well, I just released version 7 of my latest game. I actually decided to play it because I wanted to get screenshots/footage for a new trailer. I actually played it after having only just working on it for a while, and frankly I was just incredibly disappointed with how poor quality the game was, it crushed me, granted most of this was done in part with Epic Games' outage and most of the issues I saw were kinda fixed the next day, and I still ended up fixing a lot of bugs I saw and made a new update. I'm not sure why I even bothered making the update, it isn't like anyone plays the game anyways. I suck at marketing my games, clearly from the state I saw the game in I kinda suck at making these games, and I don't think I'll ever do anything I particularly wanted to do with making these dumb games. I actually released my first game, Beachside Tactics, because I was particularly inspired when reading a college essay about how you should just ignore your inner critic and just push your work out there because someone has to think it's better than how you view it. But honestly, I'm just being consumed by my own inner critic and doubts and I'm not sure I can even bother anymore. I'm thinking of just quitting and not bothering anymore, putting out stuff you made is hard. It's difficult to make stuff, it's difficult to find the motivation to keep trying when you're doing it for basically nothing because no one cares. 

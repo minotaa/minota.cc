@@ -36,7 +36,7 @@
   });
 
   const postFiles = import.meta.glob('../posts/*.md');
-  let posts: { title: string, date: string, slug: string }[] = [];
+  let posts: { title: string, date: string, slug: string, hidden: boolean }[] = [];
 
   onMount(async () => {
     const loadedPosts = await Promise.all(
@@ -45,7 +45,8 @@
         return {
           title: post.metadata.title,
           date: post.metadata.date,
-          slug: path.split('/').pop()?.replace('.md', '') ?? ''
+          slug: path.split('/').pop()?.replace('.md', '') ?? '',
+          hidden: post.metadata.hidden ?? false
         };
       })
     );
@@ -163,16 +164,18 @@
   <h1 class="text-xl text-sky-300 font-bold text-left mt-2">Posts</h1>
   <ul class="flex flex-col gap-1 md:place-self-start place-self-center list-none p-0 m-0 w-full">
     {#each posts as post}
-      <li class="flex items-center mb-1 w-full text-slate-300">
-        <a href={"/blog/" + encodeURIComponent(post.slug)} class="font-semibold whitespace-nowrap hover:text-slate-100 bg-sky-500 text-zinc-900 px-1">
-          {(() => {
-            const d = new Date(post.date);
-            const mm = String(d.getMonth() + 1).padStart(2, '0');
-            const dd = String(d.getDate() + 1).padStart(2, '0');
-            const yyyy = d.getFullYear();
-            return `${mm}-${dd}-${yyyy}`;
-          })()}</a><p>&nbsp;</p><a href={"/blog/" + encodeURIComponent(post.slug)} class="hover:text-zinc-900 px-1 hover:bg-sky-500">{post.title}</a>
-      </li>
+      {#if !post.hidden}
+        <li class="flex items-center mb-1 w-full text-slate-300">
+          <span class="font-semibold whitespace-nowrap bg-sky-500 text-zinc-900 px-1">
+            {(() => {
+              const d = new Date(post.date);
+              const mm = String(d.getMonth() + 1).padStart(2, '0');
+              const dd = String(d.getDate() + 1).padStart(2, '0');
+              const yyyy = d.getFullYear();
+              return `${mm}-${dd}-${yyyy}`;
+            })()}</span><p>&nbsp;</p><a class="hover:text-zinc-900 px-1 hover:bg-sky-500" href={"/blog/" + encodeURIComponent(post.slug)}>{post.title}</a>
+        </li>
+      {/if}
     {/each}
   </ul>
 </div>
