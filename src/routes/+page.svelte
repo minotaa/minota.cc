@@ -99,6 +99,7 @@
       {
         title: "Bulletlane (2025)",
         btns: [
+          { text: "Play Store", href: "https://play.google.com/store/apps/details?id=cc.minota.road" },
           { text: "App Store", href: "https://apps.apple.com/us/app/bulletlane/id6743356289" },
           { text: "Source Code", href: "https://github.com/minotaa/road-riot" }
         ]
