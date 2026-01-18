@@ -30,6 +30,10 @@
 </style>
 
 <div class="md:container md:mx-auto mx-auto pt-8 gap-4 mb-4 px-4">
+  <div class="flex flex-row items-center gap-4 mb-8">
+    <img alt="minota's making an announcement" title="I have an announcement to make." class="rounded-lg h-16 w-16 object-cover" src="/announcement.jpg" />
+    <a class="text-3xl font-bold text-sky-400 font-bold px-1 rounded-none transition-colors duration-150 hover:bg-sky-500 hover:text-slate-100" href={"/"}>minota's blog</a>
+  </div>
   <h1 class="text-3xl mb-2 text-slate-200">{data.metadata.title}</h1>
   <h2 class="font-semibold inline-block whitespace-nowrap bg-sky-500 text-slate-100 text-2xl px-1">
   {(() => {
