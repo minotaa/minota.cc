@@ -28,6 +28,16 @@
   font-family: 'Departure Mono', monospace;
 }
 </style>
+<svelte:head>
+  <title>{data.metadata.title} - minota's blog</title>
+  <meta name="description" content={data.metadata.description || data.metadata.title} />
+  <meta property="og:title" content={data.metadata.title} />
+  <meta property="og:description" content={data.metadata.description || data.metadata.title} />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={data.metadata.title} />
+  <meta name="twitter:description" content={data.metadata.description || data.metadata.title} />
+</svelte:head>
 
 <div class="md:container md:mx-auto mx-auto pt-8 gap-4 mb-4 px-4">
   <div class="flex flex-row items-center gap-4 mb-8">
