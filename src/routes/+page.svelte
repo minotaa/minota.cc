@@ -97,9 +97,10 @@
       {
         title: "Myrkwood: Offshoot (2025)",
         btns: [
+          { text: "App Store", href: "https://apps.apple.com/us/app/myrkwood-offshoot/id6757414836" }, 
           { text: "itch.io", href: "https://minota.itch.io/myrkwood-offshoot" },
           { text: "Steam", href: "https://store.steampowered.com/app/3951230/Myrkwood_Offshoot/" },
-          { text: "Source Code", href: "https://github.com/minotaa/coloma-co" }
+          { text: "Source Code", href: "https://github.com/minotaa/coloma-co" }          
         ]
       },
       {
