@@ -89,6 +89,13 @@
   <ul class="flex flex-col gap-0 md:gap-1 md:place-self-start place-self-center list-none p-0 m-0 w-full">
     {#each [
       {
+        title: "Showdown Events (2026)",
+        btns: [
+          { text: "Website", href: "https://showdown.events" },
+          { text: "Discord Server", href: "https://discord.com/invite/2ue62Fz3X6" },
+        ]
+      },
+      {
         title: "Raimu (Hytale Server) (2026)",
         btns: [
           { text: "Website", href: "https://limetta.dev" }
