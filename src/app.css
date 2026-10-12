@@ -1,8 +1,16 @@
+@import "tailwindcss";
+
 @font-face {
   font-family: 'Departure Mono';
   src: url('/DepartureMono-Regular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
+}
+
+
+@theme {
+  --color-brand: oklch(0.7684 0.1204 254.42);
+  --color-brand-alt: oklch(0.6795 0.1204 254.42);
 }
 
 @tailwind base;

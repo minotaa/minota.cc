@@ -1,8 +1,9 @@
 <script lang="ts">
   import "../app.css";
-  import { dev } from '$app/environment';
-  import { inject } from '@vercel/analytics';
-  inject({ mode: dev ? 'development' : 'production' });
+  import { dev } from '$app/env';
 </script>
+<style>
+  @reference "../app.css";
+</style>
 
 <slot/>

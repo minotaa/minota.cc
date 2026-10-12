@@ -35,32 +35,29 @@
     });
   });
 
-  const postFiles = import.meta.glob('../posts/*.md');
-  let posts: { title: string, date: string, slug: string, hidden: boolean }[] = [];
+  const metas = import.meta.glob('../posts/*.md', {
+    eager: true,
+    import: 'metadata'
+  }) as Record<string, { title: string; date: string; hidden?: boolean } | undefined>;
 
-  onMount(async () => {
-    const loadedPosts = await Promise.all(
-      Object.entries(postFiles).map(async ([path, resolver]) => {
-        const post = await resolver();
-        return {
-          title: post.metadata.title,
-          date: post.metadata.date,
-          slug: path.split('/').pop()?.replace('.md', '') ?? '',
-          hidden: post.metadata.hidden ?? false
-        };
-      })
-    );
+  const posts = Object.entries(metas)
+    .filter(([, meta]) => meta !== undefined)
+    .map(([path, meta]) => ({
+      title: meta!.title,
+      date: meta!.date,
+      slug: path.split('/').pop()?.replace('.md', '') ?? '',
+      hidden: meta!.hidden ?? false
+    }))
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-    posts = loadedPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-    console.log(posts)
-  });
+  console.log(Object.keys(metas).filter((p) => !metas[p]));
 </script>
 
 <div class="md:container md:mx-auto flex mx-auto flex-col pl-4 pt-8 gap-4 mb-4">
   <div class="flex flex-row items-center gap-6 mb-2">
     <img alt="minota's face" title="Quite classy looking." class="rounded h-32 w-32 md:h-40 md:w-40 object-cover" src="/me.jpg" />
     <div class="flex flex-col justify-center">
-      <h1 class="text-2xl md:text-3xl text-slate-200 font-bold"><strong class="text-sky-300">minota</strong></h1>
+      <h1 class="text-2xl md:text-3xl text-slate-200 font-bold"><strong class="text-brand-alt">minota</strong></h1>
       <h2 class="text-lg text-slate-500">he/him</h2>
         <div class="flex flex-wrap gap-2 mt-3 mb-2 text-center md:text-left">
           {#each [
@@ -75,7 +72,7 @@
                 <span class="text-slate-600 select-none font-bold text-lg align-middle">•</span>
               {/if}
               <a
-                class="text-slate-200 font-bold px-1 rounded-none transition-colors duration-150 hover:bg-sky-400 hover:text-zinc-900"
+                class="text-slate-200 font-bold px-1 rounded-none transition-colors duration-150 hover:bg-brand hover:text-zinc-900"
                 target={link.href.startsWith("mailto:") ? undefined : "_blank"}
                 href={link.href}
                 style="border-radius: 0;"
@@ -85,9 +82,15 @@
         </div>
           </div>
   </div>
-  <h1 class="text-xl text-sky-300 font-bold text-left">Projects</h1>
+  <h1 class="text-xl text-brand-alt font-bold text-left">Projects</h1>
   <ul class="flex flex-col gap-0 md:gap-1 md:place-self-start place-self-center list-none p-0 m-0 w-full">
     {#each [
+      {
+        title: "Beachside Tactics 2 (2026)",
+        btns: [
+          { text: "Alpha Demo", href: "https://minota.itch.io/beachside-tactics" }
+        ]
+      },
       {
         title: "Showdown Events (2026)",
         btns: [
@@ -168,7 +171,7 @@
               title={btn.text}
               href={btn.href}
               target="_blank"
-              class="text-sky-400 font-bold px-1 rounded-none transition-colors duration-150 hover:bg-sky-500 hover:text-zinc-900"
+              class="text-brand font-bold px-1 rounded-none transition-colors duration-150 hover:bg-brand-alt hover:text-zinc-900"
             >{btn.text}</a>
           {/each}
         </span>
@@ -176,19 +179,19 @@
     {/each}
   </ul>
 
-  <h1 class="text-xl text-sky-300 font-bold text-left mt-2">Posts</h1>
+  <h1 class="text-xl text-brand-alt font-bold text-left mt-2">Posts</h1>
   <ul class="flex flex-col gap-1 md:place-self-start place-self-center list-none p-0 m-0 w-full">
     {#each posts as post}
       {#if !post.hidden}
         <li class="flex items-center mb-1 w-full text-slate-300">
-          <span class="font-semibold whitespace-nowrap bg-sky-500 text-zinc-900 px-1">
+          <span class="font-semibold whitespace-nowrap bg-brand text-zinc-900 px-1">
             {(() => {
               const d = new Date(post.date);
               const mm = String(d.getMonth() + 1).padStart(2, '0');
               const dd = String(d.getDate() + 1).padStart(2, '0');
               const yyyy = d.getFullYear();
               return `${mm}-${dd}-${yyyy}`;
-            })()}</span><p>&nbsp;</p><a class="hover:text-zinc-900 px-1 hover:bg-sky-500" href={"/blog/" + encodeURIComponent(post.slug)}>{post.title}</a>
+            })()}</span><p>&nbsp;</p><a class="hover:text-zinc-900 px-1 hover:bg-brand" href={"/blog/" + encodeURIComponent(post.slug)}>{post.title}</a>
         </li>
       {/if}
     {/each}
