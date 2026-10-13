@@ -52,19 +52,19 @@
       <img alt="minota's making an announcement" title="I have an announcement to make." class="rounded-lg h-16 w-16 object-cover" src="/announcement.jpg" />
       <a class="text-3xl font-bold text-brand font-bold px-1 rounded-none hover:bg-brand-alt hover:text-slate-100" href={"/"}>minota's blog</a>
     </div>
-    <div class="flex flex-row gap-4">
+    <div class="flex flex-col sm:flex-row gap-1 sm:gap-4">
       <h1 class="text-3xl mb-2 text-slate-200 font-bold">{data.metadata.title}</h1>
-      <h2 class="font-semibold inline-block whitespace-nowrap bg-brand text-slate-100 text-2xl px-1 mt-1 mb-4">
+      <h2 class="font-semibold inline-block whitespace-nowrap bg-brand text-slate-100 text-2xl px-1 mt-1 mb-4 w-fit">
       {(() => {
         const d = new Date(data.metadata.date);
-        const mm = String(d.getMonth() + 1).padStart(2, '0');
-        const dd = String(d.getDate() + 1).padStart(2, '0');
-        const yyyy = d.getFullYear();
+        const mm = String(d.getUTCMonth() + 1).padStart(2, '0');
+        const dd = String(d.getUTCDate()).padStart(2, '0');
+        const yyyy = d.getUTCFullYear();
         return `${mm}-${dd}-${yyyy}`;
       })()}</h2>
     </div>
 
-    <div class="md:container container blog-content prose font-medium font-[PT Mono] mt-4 text-slate-300 space-y-4 mb-4">
+    <div class="md:container container blog-content prose font-medium font-[PT Mono] mt-4 text-slate-300 space-y-4 mb-4 sm:px-4">
       <svelte:component this={data.content} />
     </div>
   </div>

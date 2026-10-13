@@ -167,7 +167,7 @@
       <li class="flex flex-col md:flex-row md:items-center mb-3 md:mb-1 w-full text-slate-300">
         <span class="font-semibold">
           {project.title}
-          <span class="hidden md:inline long-arrow"></span>
+          <span class="hidden md:inline"><span class="long-arrow"></span></span>
         </span>
         <span class="flex flex-row gap-2 md:gap-4 md:mt-0 md:ml-2">
           {#each project.btns as btn}
@@ -191,9 +191,9 @@
           <span class="font-semibold whitespace-nowrap bg-brand text-zinc-900 px-1">
             {(() => {
               const d = new Date(post.date);
-              const mm = String(d.getMonth() + 1).padStart(2, '0');
-              const dd = String(d.getDate() + 1).padStart(2, '0');
-              const yyyy = d.getFullYear();
+              const mm = String(d.getUTCMonth() + 1).padStart(2, '0');
+              const dd = String(d.getUTCDate()).padStart(2, '0');
+              const yyyy = d.getUTCFullYear();
               return `${mm}-${dd}-${yyyy}`;
             })()}</span><p>&nbsp;</p><a class="font-bold hover:text-zinc-900 px-1 hover:bg-brand" href={"/blog/" + encodeURIComponent(post.slug)}>{post.title}</a>
         </li>
