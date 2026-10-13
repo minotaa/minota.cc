@@ -1,9 +1,9 @@
 ---
 title: "Bulletlane: v12"
 date: 2025-12-20
+category: "Changelog"
 ---
 
-# Bulletlane: v12
 - Fixed the game being unable to load from v11.
 - Added texture tints.
 - Added random different backgrounds for whenever you start a new game to make it more interesting.

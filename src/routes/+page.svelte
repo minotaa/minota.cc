@@ -46,7 +46,8 @@
       title: meta!.title,
       date: meta!.date,
       slug: path.split('/').pop()?.replace('.md', '') ?? '',
-      hidden: meta!.hidden ?? false
+      hidden: meta!.hidden ?? false,
+      category: meta!.category ?? 'Miscellaneous'
     }))
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
@@ -57,10 +58,13 @@
   <div class="flex flex-row items-center gap-6 mb-2">
     <img alt="minota's face" title="Quite classy looking." class="rounded h-32 w-32 md:h-40 md:w-40 object-cover" src="/me.jpg" />
     <div class="flex flex-col justify-center">
-      <h1 class="text-2xl md:text-3xl text-slate-200 font-bold"><strong class="text-brand-alt">minota</strong></h1>
-      <h2 class="text-lg text-slate-500">he/him</h2>
+        <div class="flex flex-row gap-3">
+          <h1 class="text-2xl md:text-3xl text-slate-200 font-bold"><strong class="text-brand">minota</strong></h1>
+          <h2 class="text-lg text-slate-500 mt-1">he/him</h2>
+        </div>
         <div class="flex flex-wrap gap-2 mt-3 mb-2 text-center md:text-left">
           {#each [
+              { text: "YouTube", href: "https://www.youtube.com/@xminota" },
               { text: "Discord", href: "https://discord.gg/8WAPWCFu8m" },
               { text: "GitHub", href: "https://github.com/minotaa" },
               { text: "Bluesky", href: "https://bsky.app/profile/minota.cc" },
@@ -72,7 +76,7 @@
                 <span class="text-slate-600 select-none font-bold text-lg align-middle">•</span>
               {/if}
               <a
-                class="text-slate-200 font-bold px-1 rounded-none transition-colors duration-150 hover:bg-brand hover:text-zinc-900"
+                class="text-slate-200 font-bold px-1 rounded-none hover:bg-brand hover:text-zinc-900"
                 target={link.href.startsWith("mailto:") ? undefined : "_blank"}
                 href={link.href}
                 style="border-radius: 0;"
@@ -86,7 +90,7 @@
   <ul class="flex flex-col gap-0 md:gap-1 md:place-self-start place-self-center list-none p-0 m-0 w-full">
     {#each [
       {
-        title: "Beachside Tactics 2 (2026)",
+        title: "Beachside Tactics (2026)",
         btns: [
           { text: "Alpha Demo", href: "https://minota.itch.io/beachside-tactics" }
         ]
@@ -129,7 +133,7 @@
         ]
       },
       {
-        title: "Beachside Tactics (2024)",
+        title: "Beachside Classic (formerly Beachside Tactics) (2024)",
         btns: [
           { text: "App Store", href: "https://apps.apple.com/us/app/beachside-tactics/id6596775495?itscg=30200&itsct=apps_box_badge&mttnsubad=6596775495" },
           { text: "Source Code", href: "https://github.com/minotaa/rhode-island" }
@@ -163,7 +167,7 @@
       <li class="flex flex-col md:flex-row md:items-center mb-3 md:mb-1 w-full text-slate-300">
         <span class="font-semibold">
           {project.title}
-          <span class="hidden md:inline">..........</span>
+          <span class="hidden md:inline long-arrow"></span>
         </span>
         <span class="flex flex-row gap-2 md:gap-4 md:mt-0 md:ml-2">
           {#each project.btns as btn}
@@ -171,7 +175,7 @@
               title={btn.text}
               href={btn.href}
               target="_blank"
-              class="text-brand font-bold px-1 rounded-none transition-colors duration-150 hover:bg-brand-alt hover:text-zinc-900"
+              class="text-brand underline hover:no-underline font-bold px-1 rounded-none hover:bg-brand-alt hover:text-zinc-900"
             >{btn.text}</a>
           {/each}
         </span>
@@ -191,7 +195,7 @@
               const dd = String(d.getDate() + 1).padStart(2, '0');
               const yyyy = d.getFullYear();
               return `${mm}-${dd}-${yyyy}`;
-            })()}</span><p>&nbsp;</p><a class="hover:text-zinc-900 px-1 hover:bg-brand" href={"/blog/" + encodeURIComponent(post.slug)}>{post.title}</a>
+            })()}</span><p>&nbsp;</p><a class="font-bold hover:text-zinc-900 px-1 hover:bg-brand" href={"/blog/" + encodeURIComponent(post.slug)}>{post.title}</a>
         </li>
       {/if}
     {/each}

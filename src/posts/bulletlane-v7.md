@@ -1,9 +1,9 @@
 ---
 title: "Bulletlane: v7"
 date: 2025-05-02
+category: "Changelog"
 ---
 
-# Bulletlane: v7
 - Added the banker enemy type that can drop a lot of money.
 - Added the gas tanker enemy type that can blow up the entire screen of enemies.
 - Made the healing, gas and banker have health dependent on the current tier.

@@ -1,9 +1,9 @@
 ---
 title: "Myrkwood: Offshoot (v7)"
 date: 2025-11-09  
+category: "Changelog"
 ---
 
-# Myrkwood: Offshoot (v7)
 I was making bug fixes for v6, and I thought of some features I'd like to add to the game, I also found a lot of bugs while doing it, so here you go. I hope you enjoy it.
 
 ## Changes:

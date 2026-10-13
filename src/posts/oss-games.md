@@ -1,6 +1,7 @@
 ---
 title: Open-source Games 
 date: 2025-08-23
+category: "Announcement"
 ---
 
 Source code for all games now public again:

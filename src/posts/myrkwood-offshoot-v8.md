@@ -1,9 +1,9 @@
 ---
 title: "Myrkwood: Offshoot (v8)"
 date: 2025-11-20  
+category: "Changelog"
 ---
 
-# Myrkwood: Offshoot (v8)
 I kinda forgot to make this post. Again, in response to v7, this is mostly bug fixes/balancing changes.
 
 ## Changes:

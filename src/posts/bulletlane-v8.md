@@ -1,9 +1,9 @@
 ---
 title: "Bulletlane: v8"
 date: 2025-05-04
+category: "Changelog"
 ---
 
-# Bulletlane: v8
 - Added tints allowing you to customize your car's color.
 - General improvements to the game.
 

@@ -1,9 +1,9 @@
 ---
 title: "Myrkwood: v7"
 date: 2025-01-25
+category: "Changelog"
 ---
 
-# Myrkwood: **v7**
 I actually thought of the name `Mirkwood` before actually seeing if it was available and when putting it into the App Store Connect I found out it wasn't actually available which is why it became `Mirkwood.`, I'm going with the final name of `Myrkwood` which should hopefully help with SEO and make the game easier to search up online.
 
 The following update is a lot, so here's a list of changes:

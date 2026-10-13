@@ -1,9 +1,9 @@
 ---
 title: "Myrkwood: v9"
 date: 2025-08-20
+category: "Changelog"
 ---
 
-# Myrkwood: v9
 - Made enemy & player status effects reset per battle.
 - Removed on hit effects for weapons and made them abilities, which cost magic.
 - Added **Strength** & **Rage** effect.

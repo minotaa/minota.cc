@@ -1,9 +1,9 @@
 ---
 title: "Bulletlane: v3"
 date: 2025-04-03
+category: "Changelog"
 ---
 
-# Bulletlane: v3
 - Added game pausing, allowing you to view a menu that shows your coins, missions and also to quit to the main menu.
 - Retextured the main enemy and added variants that get more stronger as you progress.
 - Added the score multiplier powerup to double your score so you can make high scoring runs more efficiently.

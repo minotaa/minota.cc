@@ -1,9 +1,9 @@
 ---
 title: "Bulletlane: v4"
 date: 2025-04-06
+category: "Changelog"
 ---
 
-# Bulletlane: v4
 - Added side arms, a shop upgrade you can purchase to shoot bullets diagonally.
 - Renamed Bullets to Main Weapon to facilitate the Side Weapons making sense.
 - Increased the max tier for main/side arms to 6.

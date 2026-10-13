@@ -1,9 +1,9 @@
 ---
 title: "Myrkwood: Offshoot (v10)"
 date: 2026-04-24  
+category: "Changelog"
 ---
 
-# Myrkwood: Offshoot (v10)
 Hello all once again, this is another update that adds content that I felt would make the game feel more fun.
 
 # Changes: 

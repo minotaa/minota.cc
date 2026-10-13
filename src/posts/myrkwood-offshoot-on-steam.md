@@ -1,6 +1,7 @@
 ---
 title: Myrkwood Offshoot is on Steam!
 date: 2025-09-03
+category: "Announcement"
 ---
 
 <iframe

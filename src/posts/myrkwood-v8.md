@@ -1,9 +1,9 @@
 ---
 title: "Myrkwood: v8"
 date: 2025-03-05
+category: "Changelog"
 ---
 
-# Myrkwood: v8 
 Myrkwood v8 came out yesterday and this mostly has hotfixes for certain bugs that appeared because of v7, however I will list what's new here:
 
 - New loading screen.

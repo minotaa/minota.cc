@@ -1,6 +1,7 @@
 ---
 title: "Bulletlane out on Google Play Store (v9)"
 date: 2026-01-04
+category: "Announcement"
 ---
 
 Bulletlane is now out on the **Google Play Store**! You can finally play Bulletlane on your Android devices. 

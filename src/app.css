@@ -1,16 +1,37 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: 'Departure Mono';
-  src: url('/DepartureMono-Regular.otf') format('opentype');
-  font-weight: normal;
+.pt-mono-regular {
+  font-family: "PT Mono", monospace;
+  font-weight: 400;
   font-style: normal;
 }
 
-
 @theme {
   --color-brand: oklch(0.7684 0.1204 254.42);
-  --color-brand-alt: oklch(0.6795 0.1204 254.42);
+  --color-brand-alt: oklch(0.5905 0.1204 254.42);
+}
+
+code, pre {
+  font-family: 'Fira Code Variable', monospace;
+  font-variant-ligatures: contextual;
+}
+
+.long-arrow {
+  display: inline-block;
+  width: 12ch;
+  height: 1px;
+  background: currentColor;
+  position: relative;
+  vertical-align: middle;
+}
+.long-arrow::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -4px;
+  border: 4px solid transparent;
+  border-left: 8px solid currentColor;
+  border-right: 0;
 }
 
 @tailwind base;
@@ -19,6 +40,6 @@
 
 @layer base {
   html {
-    font-family: 'Departure Mono', monospace;
+    font-family: 'PT Mono', monospace;
   }
 }

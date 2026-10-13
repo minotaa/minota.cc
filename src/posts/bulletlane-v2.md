@@ -1,9 +1,9 @@
 ---
 title: "Bulletlane: v2"
 date: 2025-04-02
+category: "Changelog"
 ---
 
-# Bulletlane: v2 
 - Added missions & mission streaks, you can do certain tasks to get gems which will be used to buy cars in the future.
 - Fixed the game spawning multiple obstacles on top of each other (there's a cooldown for obstacles spawning so no two obstacles can spawn at once).
 - The game is significantly slower at the beginning, allowing you to have more time to prepare for the ramp up.

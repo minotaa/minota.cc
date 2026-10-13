@@ -1,9 +1,9 @@
 ---
 title: "Bulletlane: v11"
 date: 2025-08-22
+category: "Changelog"
 ---
 
-# Bulletlane: v11
 - Add starter boost & starter multiplier when you start the game.
 - Change textures of tier 1-3 and 3-6 laser beam.
 - Change logic in adding score a bit.

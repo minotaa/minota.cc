@@ -2,6 +2,7 @@
 title: "Marketing your Profuctz"
 date: 2026-01-19
 hidden: true
+category: "Miscellaneous"
 ---
 
 i made a hytale server — it's called raimu

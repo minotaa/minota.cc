@@ -26,6 +26,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@fontsource-variable/fira-code": "^5.3.0",
 		"@sveltejs/adapter-cloudflare": "^8.0.0",
 		"@tailwindcss/postcss": "^4.3.3",
 		"@tailwindcss/vite": "^4.3.3",

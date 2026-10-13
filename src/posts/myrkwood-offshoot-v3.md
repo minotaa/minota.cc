@@ -1,9 +1,9 @@
 ---
 title: "Myrkwood: Offshoot (v3)"
 date: 2025-09-24
+category: "Changelog"
 ---
 
-# Myrkwood: Offshoot (v3)
 Hello, this is the update adding the aforementioned new gamemode to the game: **Dungeons**. **Dungeons** is an endless dungeon crawler where you travel through randomly generated rooms and fight waves of monsters that spawn in those rooms. I made this gamemode because I felt like the game could definitely be expanded to be more interesting and replayable, hopefully you enjoy it. I'd like to take more time to test & thoroughly make sure this version works better than **v2** which was super buggy and unfunctional, frankly. I'd love to also add a competitive gamemode in the future. 
 
 I also added two weapons to the game: The Boomerang & Throwing Daggers. They both mixup the combat system with their own unique mechanics. I had a lot of fun playing around with this weapon. You can get these weapons by simply playing the game. You'll get a notification that you obtained a new weapon after 20 minutes of gameplay. I'd love to add more weapons in the future that lean on the more sillier side... a bubble wand maybe? 

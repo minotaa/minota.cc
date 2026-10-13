@@ -1,9 +1,9 @@
 ---
 title: "Bulletlane (v13)"
 date: 2026-02-05  
+category: "Changelog"
 ---
 
-# Bulletlane: v13
 - Added back ads.
 - Added a bullet damage increase for using the laser car.
 - Added a menu to buy coins using gems.

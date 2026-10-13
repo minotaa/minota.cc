@@ -1,9 +1,9 @@
 ---
 title: "Myrkwood: Offshoot (v9)"
 date: 2026-01-04  
+category: "Changelog"
 ---
 
-# Myrkwood: Offshoot (v9)
 Hello! It's been a while since I released the release build, here's an update, additionally, I'm announcing a mobile port of Myrkwood: Offshoot, hopefully you can get excited for that.
 
 # Changes:

@@ -1,9 +1,9 @@
 ---
 title: "Myrkwood: Offshoot (v2)"
 date: 2025-09-18
+category: "Changelog"
 ---
 
-# Myrkwood: Offshoot (v2)
 Hello, I've been working on adding a new gamemode to the game, but in the meantime I'd like to send out this update to simply help with the launch of the Steam version of the game.
 
 ## Changes:

@@ -1,9 +1,9 @@
 ---
 title: "Myrkwood: Offshoot (v4)"
 date: 2025-09-28
+category: "Changelog"
 ---
 
-# Myrkwood: Offshoot (v4)
 Nothing major this update, I recently got a review from a curator that made me take another look at the online multiplayer integration of the game and I'd like to address the issue ASAP.
 
 ## Changes:

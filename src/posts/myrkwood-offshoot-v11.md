@@ -1,9 +1,8 @@
 ---
 title: "Myrkwood: Offshoot (v11)"
 date: 2026-09-06
+category: "Changelog"
 ---
-
-# Myrkwood: Offshoot (v11)
 
 ## Changes:
 - The Bombrat King has been reworked and his attacks have been made more fair & sensical, he has only two attacks, at any range he'll fire **Bombrat Mortars**, mobs that fly up into the air and crash down onto the ground with an explosion. Additionally, he'll charge up a lunge when nearby and hit you hard.

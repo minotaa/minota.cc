@@ -1,9 +1,9 @@
 ---
 title: "Bulletlane: v6"
 date: 2025-04-18
+category: "Changelog"
 ---
 
-# Bulletlane: v6
 - Added sound effects & haptics.
 - Added 7 new achievements.
 - Made it so the Obstacles Dodged stat updates when you actually dodge obstacles.
