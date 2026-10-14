@@ -4,6 +4,8 @@ date: 2026-10-09
 category: "Changelog"
 ---
 
+<iframe frameborder="0" src="https://itch.io/embed/5080837" width="552" height="167"><a href="https://minota.itch.io/beachside-tactics">Beachside Tactics Alpha by Minota</a></iframe>
+
 - Added settings for water animation speed, simplified water, text speed, and Discord Rich Presence.
 - Client settings are now stored in settings.cfg.
 - Added accounts and cloud saving. Save data is now stored on Passports. A new service created for storing Beachside Tactics' player data.
